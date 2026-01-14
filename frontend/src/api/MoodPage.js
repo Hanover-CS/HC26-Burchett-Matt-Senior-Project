@@ -89,6 +89,8 @@ function MoodPage() {
       }
   };
 
+  // create a component
+
   return (
     <div style={{ textAlign: "center", marginTop: "50px" }}>
       <h1>Mood Survey</h1>

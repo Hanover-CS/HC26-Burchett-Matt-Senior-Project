@@ -45,7 +45,7 @@ function App() {
     <Router>
 
       <nav style={{ 
-      background: "#939393ff",
+      background: "#15324e",
       padding: "15px 30px", 
       textAlign: "center", 
       display: "flex",
@@ -56,7 +56,7 @@ function App() {
           margin: 0, 
           fontSize: "30px", 
           color: "black", 
-          backgroundColor: "#ff4646ff",
+          backgroundColor: "#2EC4B6",
           padding: "8px 14px",             // inside spacing
           borderRadius: "8px",              // rounded corners
           display: "inline-block"
@@ -71,7 +71,7 @@ function App() {
             margin: "0 50px",
             fontSize: "25px",
             fontWeight: isActive ? "bold" : "normal",
-            color: isActive ? "black" : "white",
+            color: "white",
             textDecoration: "none",
           })}
         >
@@ -84,7 +84,7 @@ function App() {
             margin: "0 50px",
             fontSize: "25px",
             fontWeight: isActive ? "bold" : "normal",
-            color: isActive ? "black" : "white",
+            color: "white",
             textDecoration: "none",
           })}
         >
@@ -97,7 +97,7 @@ function App() {
             margin: "0 50px",
             fontSize: "25px",
             fontWeight: isActive ? "bold" : "normal",
-            color: isActive ? "black" : "white",
+            color: "white",
             textDecoration: "none",
           })}
         >

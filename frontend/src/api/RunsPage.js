@@ -96,7 +96,7 @@ function RunsPage() {
     <div style={{ textAlign: "center", marginTop: "50px" }}>
       <h1>Add Run</h1>
 
-      <form onSubmit={handleSubmit} style={{ marginBottom: "20px" }}>
+      <form onSubmit={handleSubmit} style={{ marginBottom: "20px"}}>
         <input
           type="datetime-local"
           name="date"
@@ -130,7 +130,7 @@ function RunsPage() {
           required
           pattern="^([0-1]?\d|2[0-3]):[0-5]\d:[0-5]\d$"
         />
-        <button type="submit">Add Run</button>
+        <button type="submit" className="button">Add Run</button>
       </form>
 
       <h1>My Runs</h1>
@@ -148,37 +148,29 @@ function RunsPage() {
               <th className="th">Distance (mi)</th>
               <th className="th">Total Time</th>
               <th className="th">Pace</th>
-              <th className="th">Delete</th>
+              <th className="th"></th>
             </tr>
           </thead>
 
-        <tbody>
-          {runs.map((run) => (
-            <tr key={run.id} className="tr">
-              <td className="td">{run.date}</td>
-              <td className="td">{run.name}</td>
-              <td className="td">{run.distance}</td>
-              <td className="td">{run.total_time}</td>
-              <td className="td">{run.pace}</td>
-              <td className="td">
-                <button
-                  onClick={() => handleDelete(run.id)}
-                  style={{
-                    background: "red",
-                    color: "white",
-                    border: "none",
-                    padding: "6px 10px",
-                    cursor: "pointer",
-                    borderRadius: "6px",
-                  }}
-                  >
-                  Delete
-                </button>
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
+          <tbody>
+            {runs.map((run) => (
+              <tr key={run.id} className="tr">
+                <td className="td">{run.date}</td>
+                <td className="td">{run.name}</td>
+                <td className="td">{run.distance}</td>
+                <td className="td">{run.total_time}</td>
+                <td className="td">{run.pace}</td>
+                <td className="td">
+                  <button className="button"
+                    onClick={() => handleDelete(run.id)}
+                    >
+                    Delete
+                  </button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
       ) : (
         <p>No runs found.</p>
       )}
