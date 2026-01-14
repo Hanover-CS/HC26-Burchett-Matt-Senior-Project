@@ -35,18 +35,17 @@ function HomePage() {
         padding: "15px",
       }}>
       <div style = {{
-        backgroundColor: "#ff4646ff",       // box background
+        backgroundColor: "#15324e",       // box background
         padding: "15px 25px",          // space inside box
         borderRadius: "12px",          // rounded corners
         boxShadow: "0 4px 10px rgba(0,0,0,0.15)", // soft shadow
         textAlign: "center"
         }}>
-        <h2>Welcome to the Mood & Running Task Tracker!</h2>
+        <h2 style={{ color: "white" }}>Welcome to the Mood & Running Task Tracker!</h2>
       </div>
       <p style={{ 
         marginTop: "12px", 
         fontSize: "18px", 
-        color: "black" 
         }}>
           Track your runs, monitor your progress, and stay motivated.
       </p>
@@ -60,7 +59,7 @@ function HomePage() {
       >
         <div
           style={{
-            backgroundColor: "#939393ff",
+            backgroundColor: "#15324e",
             padding: "20px",
             borderRadius: "10px",
             width: "350px",
@@ -68,13 +67,13 @@ function HomePage() {
             textAlign: "center"
           }}
         >
-          <h3 style={{ marginBottom: "10px" }}>Recent Activity</h3>
-          <p>View your latest runs and stats.</p>
+          <h3 style={{ marginBottom: "10px", color: "white" }}>Recent Activity</h3>
+          <p style={{ color: "white" }}>View your latest runs and stats.</p>
         </div>
 
         <div
           style={{
-            backgroundColor: "#939393ff",
+            backgroundColor: "#15324e",
             padding: "20px",
             borderRadius: "10px",
             width: "350px",
@@ -83,8 +82,8 @@ function HomePage() {
             textAlign: "center"
           }}
         >
-          <h3 style={{ marginBottom: "10px" }}>Recent Mood</h3>
-          <p>View your latest moods and stats.</p>
+          <h3 style={{ marginBottom: "10px", color: "white" }}>Recent Mood</h3>
+          <p style={{ color: "white" }}>View your latest moods and stats.</p>
         </div>
       </div>
     </div> 
