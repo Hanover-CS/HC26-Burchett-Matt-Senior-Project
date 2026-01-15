@@ -28,7 +28,7 @@
  * - Displays pace computed on the backend via Run model.
  *
  * Author: Matt Burchett
- * Last Modified: 11-19-2025
+ * Last Modified: 1-15-2026
  */
 
 import React, { useEffect, useState } from "react";

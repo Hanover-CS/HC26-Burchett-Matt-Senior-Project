@@ -15,4 +15,33 @@
 
 .App-link {
   color: #61dafb;
+} 
+
+.app-header-text {
+  margin: 0; 
+  font-size: 30px; 
+  color: black; 
+  background-color: #2EC4B6;
+  padding: 8px 14px;             
+  border-radius: 8px;              
+  display: inline-block;
+}
+
+nav {
+  background: #15324e;
+  padding: 15px 30px; 
+  text-align: center; 
+  display: flex;
+  align-items: center;
+}
+
+.nav-link {
+  color: white;
+  text-decoration: none;
+  margin: 0 50px;
+  font-size: 25px;
+}
+
+.nav-link-active {
+  font-weight: bold;
 }
