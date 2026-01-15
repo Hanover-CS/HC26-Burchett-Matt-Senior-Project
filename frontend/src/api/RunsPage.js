@@ -93,10 +93,10 @@ function RunsPage() {
   }
 
   return (
-    <div style={{ textAlign: "center", marginTop: "50px" }}>
+    <section className="run-page-section">
       <h1>Add Run</h1>
 
-      <form onSubmit={handleSubmit} style={{ marginBottom: "20px"}}>
+      <form onSubmit={handleSubmit} className="run-form">
         <input
           type="datetime-local"
           name="date"
@@ -107,7 +107,7 @@ function RunsPage() {
         <input
           type="text"
           name="name"
-          placeholder="Run name"
+          placeholder="Run Name"
           value={formData.name}
           onChange={handleChange}
           required
@@ -135,36 +135,29 @@ function RunsPage() {
 
       <h1>My Runs</h1>
       {runs.length > 0 ? (
-        <table className="runs-table" 
-        style={{ 
-        margin: "0 auto", 
-        borderCollapse: "collapse", 
-        width: "80%" 
-        }}>
+        <table className="runs-table">
           <thead>
             <tr>
-              <th className="th">Date</th>
-              <th className="th">Name</th>
-              <th className="th">Distance (mi)</th>
-              <th className="th">Total Time</th>
-              <th className="th">Pace</th>
-              <th className="th"></th>
+              <th>Date</th>
+              <th>Name</th>
+              <th>Distance (mi)</th>
+              <th>Total Time</th>
+              <th>Pace</th>
+              <th></th>
             </tr>
           </thead>
 
           <tbody>
             {runs.map((run) => (
-              <tr key={run.id} className="tr">
-                <td className="td">{run.date}</td>
-                <td className="td">{run.name}</td>
-                <td className="td">{run.distance}</td>
-                <td className="td">{run.total_time}</td>
-                <td className="td">{run.pace}</td>
-                <td className="td">
-                  <button className="button"
-                    onClick={() => handleDelete(run.id)}
-                    >
-                    Delete
+              <tr key={run.id}>
+                <td>{run.date}</td>
+                <td>{run.name}</td>
+                <td>{run.distance}</td>
+                <td>{run.total_time}</td>
+                <td>{run.pace}</td>
+                <td>
+                  <button className="button" onClick={() => handleDelete(run.id)}>
+                  Delete
                   </button>
                 </td>
               </tr>
@@ -175,7 +168,7 @@ function RunsPage() {
         <p>No runs found.</p>
       )}
 
-    </div>
+    </section>
   );
 }
 
