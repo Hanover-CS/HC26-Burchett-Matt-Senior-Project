@@ -66,10 +66,11 @@ function RunsPage() {
 
       if (!res.ok) throw new Error("Failed to add run");
 
-      //const data = await res.json();
+      const data = await res.json();
       alert("✅ Run added successfully!");
 
       // Reset form
+      setRuns((prev) => [...prev, data.run]); 
       setFormData({ name: "", date: "", total_time: "", distance: "" });
     } catch (err) {
       console.error(err);
