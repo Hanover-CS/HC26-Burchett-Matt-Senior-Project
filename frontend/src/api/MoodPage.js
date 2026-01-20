@@ -35,13 +35,22 @@ import { BASE_URL } from "./config";
 import "./MoodPage.css";
 
 function MoodPage() {
+  const MOOD_FIELDS = [
+  { name: "positivity_level", label: "Positivity" },
+  { name: "stress_level", label: "Stress" },
+  { name: "energy_level", label: "Energy" },
+  { name: "calmness_level", label: "Calmness" },
+  { name: "motivation_level", label: "Motivation" },
+  ];
+
   const [moods, setMoods] = useState([]);
-  const [formData, setFormData] = useState({ 
-    positivity_level: "", 
-    stress_level: "", 
-    energy_level: "", 
-    calmness_level: "", 
-    motivation_level: "" });
+
+  const initialFormState = Object.fromEntries(
+  MOOD_FIELDS.map(field => [field.name, 5])
+  );
+
+  const [formData, setFormData] = useState(initialFormState);
+  
 
   // Loading all moods
   useEffect(() => {
@@ -90,79 +99,43 @@ function MoodPage() {
       }
   };
 
-  // create a component
+  function MoodSlider({ label, name, value, onChange }) {
+  return (
+    <div className="mood-slider">
+      <label>
+        {label}:
+        <input
+          type="range"
+          name={name}
+          min="1"
+          max="10"
+          step="1"
+          value={value}
+          onChange={onChange}
+          />
+        </label>
+      </div>
+    );
+  }
 
   return (
     <section className="mood-page-section">
       <h1>Mood Survey</h1>
 
       <form onSubmit={handleSubmit} className="mood-form">
-        <div>
-          <label>
-            Positivity Level (1-10):
-            <input 
-            type="number" 
-            name="positivity_level" 
-            value={formData.positivity_level}
-            min="1" 
-            max="10"
-            onChange={handleChange} 
-            required />
-          </label>
-        </div>
-        <div>
-          <label>
-            Stress Level (1-10):
-            <input 
-            type="number" 
-            name="stress_level"
-            value={formData.stress_level}
-            min="1" 
-            max="10" 
+        {MOOD_FIELDS.map(field => (
+          <MoodSlider
+            key={field.name}
+            label={`${field.label} Level (1–10)`}
+            name={field.name}
+            value={formData[field.name]}
             onChange={handleChange}
-            required />
-          </label>
-        </div>
-        <div>
-          <label>
-            Energy Level (1-10):
-            <input 
-            type="number" 
-            name="energy_level" 
-            value={formData.energy_level}
-            min="1" 
-            max="10" 
-            onChange={handleChange}
-            required />
-          </label>
-        </div>
-        <div>
-          <label>
-            Calmness Level (1-10):
-            <input 
-            type="number" 
-            name="calmness_level" 
-            value={formData.calmness_level}
-            min="1" 
-            max="10" 
-            onChange={handleChange}
-            required />
-          </label>
-        </div>
-        <div>
-          <label>
-            Motivation Level (1-10):
-            <input 
-            type="number" 
-            name="motivation_level"
-            value={formData.motivation_level}
-            min="1" 
-            max="10"
-            onChange={handleChange} 
-            required />
-          </label>
-        </div>
-        <button type="submit">Submit Mood</button>
+          />
+        ))}
+
+        <button type="submit" className="button">
+          Submit Mood
+        </button>
       </form>
       <h1>My Moods</h1>
       <ul>
