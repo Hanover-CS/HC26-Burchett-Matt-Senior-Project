@@ -9,11 +9,29 @@
     margin-bottom: 30px;
 }
 
-.mood-slider {
-  margin: 15px 0;
-}
-
 .mood-slider input[type="range"] {
   width: 75%;
   margin-left: 10px;
+}
+
+.slider-group {
+  max-width: 800px;
+  margin: 30px auto;
+}
+
+.mood-slider {
+  width: 100%;
+}
+
+.slider-scale {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 6px;
+  padding: 0 12px;
+  font-size: 0.85rem;
+}
+
+.slider-scale span {
+  text-align: center;
+  width: 1ch;
 }

@@ -101,7 +101,7 @@ function MoodPage() {
 
   function MoodSlider({ label, name, value, onChange }) {
   return (
-    <div className="mood-slider">
+    <div className="slider-group">
       <label>
         {label}:
         <input
@@ -112,8 +112,14 @@ function MoodPage() {
           step="1"
           value={value}
           onChange={onChange}
+          className="mood-slider"
           />
         </label>
+        <div className="slider-scale">
+          {[...Array(10)].map((_, i) => (
+            <span key={i}>{i + 1}</span>
+          ))}
+        </div>
       </div>
     );
   }
