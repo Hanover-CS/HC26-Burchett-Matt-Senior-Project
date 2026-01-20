@@ -32,6 +32,7 @@
 
 import React, { useEffect, useState } from "react";
 import { BASE_URL } from "./config";
+import "./MoodPage.css";
 
 function MoodPage() {
   const [moods, setMoods] = useState([]);
@@ -92,11 +93,10 @@ function MoodPage() {
   // create a component
 
   return (
-    <div style={{ textAlign: "center", marginTop: "50px" }}>
+    <section className="mood-page-section">
       <h1>Mood Survey</h1>
-      <p style={{ marginBottom: "20px" }}>Fill out your daily mood survey!</p>
 
-      <form onSubmit={handleSubmit} style={{ marginBottom: "30px" }}>
+      <form onSubmit={handleSubmit} className="mood-form">
         <div>
           <label>
             Positivity Level (1-10):
@@ -177,7 +177,7 @@ function MoodPage() {
           </li>
         ))}
       </ul>
-    </div>
+    </section>
   );
 }
 

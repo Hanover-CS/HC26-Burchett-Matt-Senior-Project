@@ -1,0 +1,10 @@
+.mood-page-section {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    margin-top: 40px;
+}
+
+.mood-form {
+    margin-bottom: 30px;
+}
