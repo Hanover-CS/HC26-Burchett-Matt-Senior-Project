@@ -144,18 +144,35 @@ function MoodPage() {
         </button>
       </form>
       <h1>My Moods</h1>
-      <ul>
-        {moods.map((mood) => (
-          <li key={mood.id}>
-            {mood.date}<br />
-            Positivity: {mood.positivity_level}, 
-            Stress: {mood.stress_level},
-            Energy: {mood.energy_level}, 
-            Calmness: {mood.calmness_level},
-            Motivation: {mood.motivation_level}
-          </li>
-        ))}
-      </ul>
+      {moods.length > 0 ? (
+        <table className="mood-table">
+          <thead>
+            <tr>
+              <th>Date</th>
+              <th>Positivity</th>
+              <th>Stress</th>
+              <th>Energy</th>
+              <th>Calmness</th>
+              <th>Motivation</th>
+            </tr>
+          </thead>
+          
+          <tbody>
+            {moods.map((mood) => (
+              <tr key={mood.id}>
+                <td>{mood.date}</td>
+                <td>{mood.positivity_level}</td>
+                <td>{mood.stress_level}</td>
+                <td>{mood.energy_level}</td>
+                <td>{mood.calmness_level}</td>
+                <td>{mood.motivation_level}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      ) : (
+        <p>No mood entries found.</p>
+      )}
     </section>
   );
 }
