@@ -48,3 +48,13 @@ def add_mood():
     db.session.add(new_mood)
     db.session.commit()
     return {"message": "Mood added successfully", "mood": new_mood.to_dict()}, 201
+
+@mood_bp.route("/api/mood/<int:mood_id>", methods=["DELETE"])
+def delete_mood(mood_id):
+    mood = Mood.query.get(mood_id)
+    if not mood:
+        return {"error": "Mood not found"}, 404
+
+    db.session.delete(mood)
+    db.session.commit()
+    return {"message": "Mood deleted successfully"}, 200
