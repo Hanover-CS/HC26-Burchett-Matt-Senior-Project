@@ -84,7 +84,11 @@ function MoodPage() {
 
       if (!res.ok) throw new Error("Failed to add run");
 
+      const data = await res.json();
       alert("Survey submitted!");
+      
+      // Update mood list without refresh
+      setMoods((prev) => [...prev, data.mood]);
 
       // Clear inputs
       setFormData({
