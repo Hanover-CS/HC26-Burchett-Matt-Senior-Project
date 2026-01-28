@@ -99,6 +99,21 @@ function MoodPage() {
       }
   };
 
+  const handleDelete = async (id) => {
+    try {
+      const res = await fetch(`${BASE_URL}/api/mood/${id}`, {
+        method: "DELETE",
+      });
+      if (!res.ok) throw new Error("Failed to delete mood");
+      setMoods(moods.filter((mood) => mood.id !== id));
+      alert("✅ Mood deleted successfully!");
+      
+    } catch (err) {
+      console.error(err);
+      alert("❌ Error deleting mood");
+    }
+  }
+
   function MoodSlider({ label, name, value, onChange }) {
   return (
     <div className="slider-group">
@@ -154,6 +169,7 @@ function MoodPage() {
               <th>Energy</th>
               <th>Calmness</th>
               <th>Motivation</th>
+              <th></th>
             </tr>
           </thead>
           
@@ -166,6 +182,11 @@ function MoodPage() {
                 <td>{mood.energy_level}</td>
                 <td>{mood.calmness_level}</td>
                 <td>{mood.motivation_level}</td>
+                <td>
+                  <button className="button" onClick={() => handleDelete(mood.id)}>
+                    Delete
+                  </button>
+                </td>
               </tr>
             ))}
           </tbody>
