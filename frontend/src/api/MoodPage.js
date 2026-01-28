@@ -88,11 +88,11 @@ function MoodPage() {
 
       // Clear inputs
       setFormData({
-        positivity_level: "", 
-        stress_level: "", 
-        energy_level: "", 
-        calmness_level: "", 
-        motivation_level: ""});
+        positivity_level: "5", 
+        stress_level: "5", 
+        energy_level: "5", 
+        calmness_level: "5", 
+        motivation_level: "5"});
       } catch (err) {
         console.error(err);
         alert("Error submitting survey");
