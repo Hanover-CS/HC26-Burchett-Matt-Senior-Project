@@ -27,7 +27,7 @@
  * - Displays mood entries fetched from the backend.
  * 
  * Author: Matt Burchett
- * Last Modified: 12-9-2025
+ * Last Modified: 1-28-2025
  */
 
 import React, { useEffect, useState } from "react";

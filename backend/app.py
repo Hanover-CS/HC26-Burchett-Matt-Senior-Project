@@ -20,9 +20,10 @@ Dependencies:
 - db, Run from models.py
 - runs_bp from routes/runs_routes.py
 - mood_bp from routes/mood_routes.py
+- home_bp from routes/home_routes.py
 
 Author: Matt Burchett
-Last Modified: 12-9-2025
+Last Modified: 1-30-2026
 """
 
 from flask import Flask

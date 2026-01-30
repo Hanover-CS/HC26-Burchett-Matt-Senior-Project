@@ -20,7 +20,7 @@
  * - Currently serves as a static landing page; future enhancements may include login functionality.
  *
  * Author: Matt Burchett
- * Last Modified: 11-19-2025
+ * Last Modified: 1-30-2026
  */
 
 import React, { useEffect, useState } from "react";

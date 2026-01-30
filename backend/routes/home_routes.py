@@ -1,3 +1,26 @@
+"""
+File: home_routes.py
+
+Description:
+Flask backend application for the home page portion of the project.
+Implements API routes for retrieving the most recent run and mood entries
+while managing database interactions through SQLAlchemy. Ensures returned
+responses follow a structured API.
+
+Responsibilities:
+- Define backend API route for GET /api/recents.
+
+Endpoints:
+- GET /api/recents : Returns the most recent run and mood entries.
+
+Dependencies:
+- Blueprint
+- db, Mood, Run from models.py
+
+Author: Matt Burchett
+Last Modified: 1-30-2026
+"""
+
 from flask import Blueprint
 from models import db, Mood, Run
 
