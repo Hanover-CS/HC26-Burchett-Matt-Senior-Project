@@ -57,7 +57,7 @@ function HomePage() {
           {latestRun ? (
             <div className="box-text">
               <p><strong>{latestRun.date}</strong></p>
-              <p>Date: {latestRun.name}</p>
+              <p>Name: {latestRun.name}</p>
               <p>Distance: {latestRun.distance} mi</p>
               <p>Pace: {latestRun.pace}</p>
               <p>Duration: {latestRun.total_time}</p>
