@@ -11,23 +11,27 @@
  * - Render a form allowing users to submit new mood survey data.
  * - Validate and send POST requests to the backend.
  * - Fetch existing moods from the backend when the page loads.
- * - Display mood information in a styled list.
+ * - Display mood information in a styled table.
  *
  * Key Components / Functions:
  * - MoodPage: Main page component with form and list.
  * - handleChange(): Updates form state on user input.
  * - handleSubmit(): Sends POST /api/mood request to backend.
+ * - handleDelete(): Sends DELETE /api/mood/:id request to backend.
  * 
  * Dependencies:
  * - React (useState, useEffect)
  * - fetch API
+ * - MoodForm from ./MoodForm
+ * - MoodTable from ./MoodTable
+ * - ./MoodPage.css for styling
  *
  * Notes:
  * - Requires backend integer ratings for successful submission.
  * - Displays mood entries fetched from the backend.
  * 
  * Author: Matt Burchett
- * Last Modified: 1-28-2025
+ * Last Modified: 2-2-2026
  */
 
 import { useEffect, useState } from "react";
