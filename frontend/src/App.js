@@ -38,7 +38,7 @@ import React from "react";
 import { BrowserRouter as Router, Routes, Route, NavLink } from "react-router-dom";
 import RunsPage from "./api/RunsPage/RunsPage.js";
 import HomePage from "./home/HomePage";
-import MoodPage from "./api/MoodPage";
+import MoodPage from "./api/MoodPage/MoodPage.js";
 import "./App.css";
 
 
