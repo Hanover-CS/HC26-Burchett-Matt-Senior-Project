@@ -33,6 +33,7 @@
 import React, { useEffect, useState } from "react";
 import { BASE_URL } from "../config";
 import "./MoodPage.css";
+import MoodForm from "./MoodForm";
 
 function MoodPage() {
   const MOOD_FIELDS = [
@@ -118,50 +119,17 @@ function MoodPage() {
     }
   }
 
-  function MoodSlider({ label, name, value, onChange }) {
-  return (
-    <div className="slider-group">
-      <label>
-        {label}:
-        <input
-          type="range"
-          name={name}
-          min="1"
-          max="10"
-          step="1"
-          value={value}
-          onChange={onChange}
-          className="mood-slider"
-          />
-        </label>
-        <div className="slider-scale">
-          {[...Array(10)].map((_, i) => (
-            <span key={i}>{i + 1}</span>
-          ))}
-        </div>
-      </div>
-    );
-  }
-
   return (
     <section className="mood-page-section">
       <h1>Mood Survey</h1>
 
-      <form onSubmit={handleSubmit} className="mood-form">
-        {MOOD_FIELDS.map(field => (
-          <MoodSlider
-            key={field.name}
-            label={`${field.label} Level (1–10)`}
-            name={field.name}
-            value={formData[field.name]}
-            onChange={handleChange}
-          />
-        ))}
+      <MoodForm
+        fields={MOOD_FIELDS}
+        formData={formData}
+        onChange={handleChange}
+        onSubmit={handleSubmit}
+      />
 
-        <button type="submit" className="button">
-          Submit Mood
-        </button>
-      </form>
       <h1>My Moods</h1>
       {moods.length > 0 ? (
         <table className="mood-table">
