@@ -16,19 +16,24 @@
  * Key Components / Functions:
  * - RunsPage: Main page component with form and table.
  * - handleChange(): Updates form state on user input.
- * - handleSubmit(): Sends POST /api/runs request to backend.
+ * - handleRunSubmit(): Sends POST /api/runs request to backend.
+ * - handleRunDelete(): Sends DELETE /api/runs/:id request to backend.
  *
  * Dependencies:
  * - React (useState, useEffect)
  * - getRuns() from ./api/runs
  * - fetch API
+ * - RunForm from ./RunsForm
+ * - RunsTable from ./RunsTable
+ * - ./RunsPage.css for styling
  *
  * Notes:
  * - Requires backend time format HH:MM:SS for successful submission.
  * - Displays pace computed on the backend via Run model.
+ * - Alerts user on success/failure of add/delete operations.
  *
  * Author: Matt Burchett
- * Last Modified: 1-15-2026
+ * Last Modified: 2-2-2026
  */
 
 import React, { useEffect, useState } from "react";
