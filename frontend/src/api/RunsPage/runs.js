@@ -20,7 +20,7 @@
  * Last Modified: 11-19-2025
  */
 
-import { BASE_URL } from "./config";
+import { BASE_URL } from "../config";
 
 export async function getRuns() {
   try {
