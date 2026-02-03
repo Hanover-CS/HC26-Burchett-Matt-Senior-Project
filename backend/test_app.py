@@ -43,6 +43,29 @@ def test_add_run_success():
     assert res.json["run"]["total_time"] == "00:45:00"
     assert "pace" in res.json["run"]       # automatic model pace calculation
 
+def test_delete_run_success():
+    client = app.test_client()
+
+    # First, add a run to delete
+    data = {
+        "name": "Run to Delete",
+        "date": "2025-01-20T10:00",
+        "distance": 6.0,
+        "total_time": "00:50:00"
+    }
+
+    res_add = client.post("/api/runs", json=data)
+    run_id = res_add.json["run"]["id"]
+
+    # Now delete the run
+    res_delete = client.delete(f"/api/runs/{run_id}")
+
+    assert res_delete.status_code == 200
+    assert res_delete.json["message"] == "Run deleted successfully"
+
+    # Verify deletion
+    res_get = client.get("/api/runs")
+    assert all(run["id"] != run_id for run in res_get.json["runs"])
 
 # Test POST /api/runs with invalid time format
 def test_add_run_invalid_time():
@@ -165,3 +188,37 @@ def test_get_moods_after_adding():
     assert res.json["moods"][0]["energy_level"] == 6
     assert res.json["moods"][0]["calmness_level"] == 5
     assert res.json["moods"][0]["motivation_level"] == 7
+
+def test_delete_mood_success():
+    client = app.test_client()
+
+    # Add mood
+    res_add = client.post("/api/mood", json={
+        "positivity_level": 7,
+        "stress_level": 2,
+        "energy_level": 8,
+        "calmness_level": 7,
+        "motivation_level": 8
+    })
+
+    mood_id = res_add.json["mood"]["id"]
+
+    # Delete mood
+    res_delete = client.delete(f"/api/mood/{mood_id}")
+
+    assert res_delete.status_code == 200
+    assert res_delete.json["message"] == "Mood deleted successfully"
+
+    # Verify deletion
+    res_get = client.get("/api/mood")
+    assert all(mood["id"] != mood_id for mood in res_get.json["moods"])
+
+def test_delete_mood_not_found():
+    client = app.test_client()
+
+    # Attempt to delete non-existent mood
+    res_delete = client.delete("/api/mood/9999")  # Assuming 9999 does not exist
+
+    assert res_delete.status_code == 404
+    assert res_delete.json["error"] == "Mood not found"
+
