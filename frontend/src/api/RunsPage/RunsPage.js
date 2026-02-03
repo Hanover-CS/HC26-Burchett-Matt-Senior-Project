@@ -32,9 +32,9 @@
  */
 
 import React, { useEffect, useState } from "react";
-import { getRuns } from "./runs";
+import { getRuns } from "../runs";
 import "./RunsPage.css";
-import { BASE_URL } from "./config";
+import { BASE_URL } from "../config";
 
 function RunsPage() {
 
