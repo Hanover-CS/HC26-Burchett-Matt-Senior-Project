@@ -34,6 +34,7 @@ import React, { useEffect, useState } from "react";
 import { BASE_URL } from "../config";
 import "./MoodPage.css";
 import MoodForm from "./MoodForm";
+import MoodTable from "./MoodTable";
 
 function MoodPage() {
   const MOOD_FIELDS = [
@@ -131,41 +132,8 @@ function MoodPage() {
       />
 
       <h1>My Moods</h1>
-      {moods.length > 0 ? (
-        <table className="mood-table">
-          <thead>
-            <tr>
-              <th>Date</th>
-              <th>Positivity</th>
-              <th>Stress</th>
-              <th>Energy</th>
-              <th>Calmness</th>
-              <th>Motivation</th>
-              <th></th>
-            </tr>
-          </thead>
-          
-          <tbody>
-            {moods.map((mood) => (
-              <tr key={mood.id}>
-                <td>{mood.date}</td>
-                <td>{mood.positivity_level}</td>
-                <td>{mood.stress_level}</td>
-                <td>{mood.energy_level}</td>
-                <td>{mood.calmness_level}</td>
-                <td>{mood.motivation_level}</td>
-                <td>
-                  <button className="button" onClick={() => handleDelete(mood.id)}>
-                    Delete
-                  </button>
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      ) : (
-        <p>No mood entries found.</p>
-      )}
+
+      <MoodTable moods={moods} onDelete={handleDelete} />
     </section>
   );
 }

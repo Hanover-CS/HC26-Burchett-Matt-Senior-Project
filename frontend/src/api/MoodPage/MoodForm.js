@@ -5,6 +5,8 @@
  * Form component for submitting a mood survey.
  */
 
+import "./MoodPage.css";
+
 function MoodSlider({ label, name, value, onChange }) {
   return (
     <div className="slider-group">
