@@ -37,6 +37,15 @@ import "./RunsPage.css";
 import { BASE_URL } from "./config";
 
 function RunsPage() {
+
+  const RUNS_URL = `${BASE_URL}/api/runs`;
+
+  const addSuccess = "✅ Run added successfully!";
+  const addError = "❌ Error adding run";
+  
+  const deleteSuccess = "✅ Run deleted successfully!";
+  const deleteError = "❌ Error deleting run";
+
   const [runs, setRuns] = useState([]);
   const [formData, setFormData] = useState({ name: "", date: "", total_time: "", distance: "" });
 
@@ -58,7 +67,7 @@ function RunsPage() {
     e.preventDefault();
 
     try {
-      const res = await fetch(`${BASE_URL}/api/runs`, {
+      const res = await fetch(RUNS_URL, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
@@ -67,29 +76,29 @@ function RunsPage() {
       if (!res.ok) throw new Error("Failed to add run");
 
       const data = await res.json();
-      alert("✅ Run added successfully!");
+      alert(addSuccess);
 
       // Reset form
       setRuns((prev) => [...prev, data.run]); 
       setFormData({ name: "", date: "", total_time: "", distance: "" });
     } catch (err) {
       console.error(err);
-      alert("❌ Error adding run");
+      alert(addError);
     }
   };
 
   const handleDelete = async (id) => {
     try {
-      const res = await fetch(`${BASE_URL}/api/runs/${id}`, {
+      const res = await fetch(`${RUNS_URL}/${id}`, {
         method: "DELETE",
       });
-      if (!res.ok) throw new Error("Failed to delete run");
+      if (!res.ok) throw new Error(deleteError);
       setRuns(runs.filter((run) => run.id !== id));
-      alert("✅ Run deleted successfully!");
+      alert(deleteSuccess);
       
     } catch (err) {
       console.error(err);
-      alert("❌ Error deleting run");
+      alert(deleteError);
     }
   }
 
