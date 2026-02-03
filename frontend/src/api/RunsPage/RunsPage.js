@@ -38,7 +38,7 @@
 
 import { useEffect, useState } from "react";
 
-import { getRuns } from "./runs";
+import { getRuns } from "./runs_connectors";
 import { BASE_URL } from "../config";
 
 import "./RunsPage.css";
