@@ -42,7 +42,7 @@ function RunsPage() {
 
   const addSuccess = "✅ Run added successfully!";
   const addError = "❌ Error adding run";
-  
+
   const deleteSuccess = "✅ Run deleted successfully!";
   const deleteError = "❌ Error deleting run";
 
@@ -63,7 +63,7 @@ function RunsPage() {
     });
   };
 
-  const handleSubmit = async (e) => {
+  const handleRunSubmit = async (e) => {
     e.preventDefault();
 
     try {
@@ -87,7 +87,7 @@ function RunsPage() {
     }
   };
 
-  const handleDelete = async (id) => {
+  const handleRunDelete = async (id) => {
     try {
       const res = await fetch(`${RUNS_URL}/${id}`, {
         method: "DELETE",
@@ -106,7 +106,7 @@ function RunsPage() {
     <section className="run-page-section">
       <h1>Add Run</h1>
 
-      <form onSubmit={handleSubmit} className="run-form">
+      <form onSubmit={handleRunSubmit} className="run-form">
         <input
           type="datetime-local"
           name="date"
@@ -166,7 +166,7 @@ function RunsPage() {
                 <td>{run.total_time}</td>
                 <td>{run.pace}</td>
                 <td>
-                  <button className="button" onClick={() => handleDelete(run.id)}>
+                  <button className="button" onClick={() => handleRunDelete(run.id)}>
                   Delete
                   </button>
                 </td>
