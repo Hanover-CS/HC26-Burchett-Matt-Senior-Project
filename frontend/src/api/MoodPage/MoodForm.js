@@ -3,6 +3,20 @@
  *
  * Description:
  * Form component for submitting a mood survey.
+ * 
+ * Responsibilities:
+ * - Render sliders for mood attributes.
+ * - Handle input changes and form submission.
+ * 
+ * Key Components / Functions:
+ * - MoodForm: Functional component rendering the form.
+ * - MoodSlider: Sub-component for individual sliders.
+ * 
+ * Dependencies:
+ * - ./MoodPage.css for styling
+ * 
+ * Author: Matt Burchett
+ * Last Modified: 2-2-2026
  */
 
 import "./MoodPage.css";

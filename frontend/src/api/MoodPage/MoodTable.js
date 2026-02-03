@@ -3,6 +3,19 @@
  *
  * Description:
  * Displays a table of mood entries.
+ * 
+ * Responsibilities:
+ * - Render a table of mood entries.
+ * - Provide delete button for each mood entry.
+ * 
+ * Key Components / Functions:
+ * - MoodTable: Functional component rendering the table.
+ * 
+ * Dependencies:
+ * - ./MoodPage.css for styling
+ * 
+ * Author: Matt Burchett
+ * Last Modified: 2-2-2026
  */
 
 import "./MoodPage.css";
