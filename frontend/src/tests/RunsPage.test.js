@@ -1,8 +1,8 @@
 import { render, screen, fireEvent, waitFor } from "@testing-library/react";
-import RunsPage from "../api/RunsPage";
-import { getRuns } from "../api/runs";
+import RunsPage from "../api/RunsPage/RunsPage";
+import { getRuns } from "../api/RunsPage/runs_connectors";
 
-jest.mock("../api/runs");
+jest.mock("../api/RunsPage/runs_connectors");
 global.fetch = jest.fn();
 global.alert = jest.fn();
 
@@ -40,7 +40,7 @@ test("submits a new run", async () => {
   // Wait for initial fetch of runs
   await screen.findByText("Test Run");
 
-  fireEvent.change(screen.getByPlaceholderText("Run name"), {
+  fireEvent.change(screen.getByPlaceholderText("Run Name"), {
     target: { value: "My New Run" }
   });
 
@@ -104,3 +104,37 @@ test("deletes a run", async () => {
   });
 });
 
+// test("handles add run error", async () => {
+//   fetch.mockResolvedValueOnce({ ok: false });
+
+//   render(<RunsPage />);
+
+//   // Wait for initial fetch of runs
+//   await screen.findByText("Test Run");
+
+//   fireEvent.change(screen.getByPlaceholderText("Run Name"), {
+//     target: { value: "My New Run" }
+//   });
+
+//   fireEvent.change(screen.getByPlaceholderText("Distance (miles)"), {
+//     target: { value: "2" }
+//   });
+
+//   fireEvent.change(screen.getByPlaceholderText("Time (HH:MM:SS)"), {
+//     target: { value: "00:20:00" }
+//   });
+
+//   const dateInput = screen.getByDisplayValue("") || 
+//     document.querySelector("input[type=datetime-local]") ||
+//     document.querySelector("input[type=date]");
+  
+//   fireEvent.change(dateInput, {
+//     target: { value: "2025-01-02T12:00" }
+//   });
+
+//   fireEvent.click(screen.getByRole("button", { name: /Add Run/i }));
+
+//   await waitFor(() => {
+//     expect(global.alert).toHaveBeenCalledWith("❌ Error adding run");
+//   });
+// });

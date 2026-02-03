@@ -1,5 +1,5 @@
 import { render, screen, fireEvent, waitFor } from "@testing-library/react";
-import MoodPage from "../api/MoodPage.js";
+import MoodPage from "../api/MoodPage/MoodPage.js";
 
 
 global.fetch = jest.fn();
@@ -24,11 +24,12 @@ beforeEach(() => {
   });
 });
 
-test("loads and displays mood list", async () => {
+test("loads and displays mood form", async () => {
   render(<MoodPage />);
 
-  const moodEntry = await screen.findByText(/Positivity/i);
-  expect(moodEntry).toBeInTheDocument();
+  // Wait for async load
+  const label = await screen.findByText(/Positivity Level/i);
+  expect(label).toBeInTheDocument();
 });
 
 test("submits a mood survey", async () => {
@@ -62,5 +63,43 @@ test("submits a mood survey", async () => {
     expect(fetch).toHaveBeenCalledTimes(2); 
     // #1 initial GET /api/mood
     // #2 submit POST /api/mood
+  });
+});
+
+test("deletes a mood entry", async () => {
+  fetch.mockResolvedValueOnce({ ok: true }); // DELETE request mock
+
+  render(<MoodPage />);
+
+  // Wait for initial load
+  await screen.findByText(/Positivity/i);
+
+  fireEvent.click(screen.getByText("Delete"));
+
+  await waitFor(() => {
+    expect(fetch).toHaveBeenCalledTimes(2); 
+    // #1 initial GET /api/mood
+    // #2 DELETE /api/mood/:id
+  });
+});
+
+test("handles submission error", async () => {
+  fetch.mockResolvedValueOnce({ ok: false }); // Simulate POST error
+
+  render(<MoodPage />);
+
+  // Wait for initial load
+  await screen.findByText(/Positivity/i);
+
+  fireEvent.change(screen.getByLabelText(/Positivity/i), {
+    target: { value: "7" }
+  });
+
+  fireEvent.click(screen.getByText("Submit Mood"));
+
+  await waitFor(() => {
+    expect(fetch).toHaveBeenCalledTimes(2); 
+    // #1 initial GET /api/mood
+    // #2 failed POST /api/mood
   });
 });

@@ -8,6 +8,6 @@ test("renders homepage welcome text", () => {
 
 test("renders both info boxes", () => {
   render(<HomePage />);
-  expect(screen.getByText("Recent Activity")).toBeInTheDocument();
+  expect(screen.getByText("Recent Run")).toBeInTheDocument();
   expect(screen.getByText("Recent Mood")).toBeInTheDocument();
 });
