@@ -4,23 +4,27 @@
  * Description:
  * React page component for the home page of the Mood & Running Task Tracker app.
  * This component serves as a simple landing page that welcomes users and provides
- * a brief overview of the app's purpose.
+ * a brief overview of the app's purpose. 
  *
  * Responsibilities:
  * - Render a welcome message and brief description of the app.
- * - Provide styled boxes for recent activity and adding new runs (placeholders for future functionality).
+ * - Serve as the landing page for users visiting the app.
+ * - Display recent run and mood data.
+ * 
  *
  * Key Components:
  * - HomePage: Main page component for the home page.
  *
  * Dependencies:
  * - React
+ * - BASE_URL from ../api/config
+ * - ./HomePage.css for styling
  *
  * Notes:
  * - Currently serves as a static landing page; future enhancements may include login functionality.
  *
  * Author: Matt Burchett
- * Last Modified: 1-30-2026
+ * Last Modified: 2-2-2026
  */
 
 import React, { useEffect, useState } from "react";
