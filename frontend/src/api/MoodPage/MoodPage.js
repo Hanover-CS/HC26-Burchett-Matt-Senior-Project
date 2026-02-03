@@ -37,6 +37,17 @@ import MoodForm from "./MoodForm";
 import MoodTable from "./MoodTable";
 
 function MoodPage() {
+
+  MOOD_URL = `${BASE_URL}/api/mood`;
+
+  const deleteSuccess = "✅ Mood deleted successfully!";
+  const deleteError = "❌ Error deleting mood";
+
+  const addSuccess = "✅ Survey submitted!";
+  const addError = "❌ Error submitting survey";
+
+  const base_input = "5";
+
   const MOOD_FIELDS = [
   { name: "positivity_level", label: "Positivity" },
   { name: "stress_level", label: "Stress" },
@@ -56,7 +67,7 @@ function MoodPage() {
 
   // Loading all moods
   useEffect(() => {
-    fetch(`${BASE_URL}/api/mood`)
+    fetch(MOOD_URL)
       .then((res) => res.json())
       .then((data) => setMoods(data.moods));
     }, []);
@@ -65,7 +76,7 @@ function MoodPage() {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   }
 
-  async function handleSubmit(e) {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     // Convert strings → integers
@@ -78,45 +89,45 @@ function MoodPage() {
     };
 
     try {
-      const res = await fetch(`${BASE_URL}/api/mood`, {
+      const res = await fetch(MOOD_URL, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload),
       });
 
-      if (!res.ok) throw new Error("Failed to add run");
+      if (!res.ok) throw new Error(addError);
 
       const data = await res.json();
-      alert("Survey submitted!");
+      alert(addSuccess);
       
       // Update mood list without refresh
       setMoods((prev) => [...prev, data.mood]);
 
       // Clear inputs
       setFormData({
-        positivity_level: "5", 
-        stress_level: "5", 
-        energy_level: "5", 
-        calmness_level: "5", 
-        motivation_level: "5"});
+        positivity_level: base_input, 
+        stress_level: base_input, 
+        energy_level: base_input, 
+        calmness_level: base_input, 
+        motivation_level: base_input});
       } catch (err) {
         console.error(err);
-        alert("Error submitting survey");
+        alert(addError);
       }
   };
 
   const handleDelete = async (id) => {
     try {
-      const res = await fetch(`${BASE_URL}/api/mood/${id}`, {
+      const res = await fetch(`${MOOD_URL}/${id}`, {
         method: "DELETE",
       });
-      if (!res.ok) throw new Error("Failed to delete mood");
+      if (!res.ok) throw new Error(deleteError);
       setMoods(moods.filter((mood) => mood.id !== id));
-      alert("✅ Mood deleted successfully!");
+      alert(deleteSuccess);
       
     } catch (err) {
       console.error(err);
-      alert("❌ Error deleting mood");
+      alert(deleteError);
     }
   }
 
