@@ -66,6 +66,7 @@ function RunsPage() {
     });
   }, []);
 
+  // Handling form input changes
   const handleChange = (e) => {
     setFormData({
       ...formData,
@@ -83,12 +84,12 @@ function RunsPage() {
         body: JSON.stringify(formData),
       });
 
-      if (!res.ok) throw new Error("Failed to add run");
+      if (!res.ok) throw new Error(addError);
 
       const data = await res.json();
       alert(addSuccess);
 
-      // Reset form
+      // Automatically update runs list with new run after successful addition
       setRuns((prev) => [...prev, data.run]); 
       setFormData({ name: "", date: "", total_time: "", distance: "" });
     } catch (err) {
@@ -103,6 +104,7 @@ function RunsPage() {
         method: "DELETE",
       });
       if (!res.ok) throw new Error(deleteError);
+      // Update runs list after successful deletion
       setRuns(runs.filter((run) => run.id !== id));
       alert(deleteSuccess);
       
