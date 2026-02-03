@@ -32,9 +32,10 @@
  */
 
 import React, { useEffect, useState } from "react";
-import { getRuns } from "../runs";
+import { getRuns } from "./runs";
 import "./RunsPage.css";
 import { BASE_URL } from "../config";
+import RunForm from "./RunsForm";
 
 function RunsPage() {
 
@@ -106,42 +107,11 @@ function RunsPage() {
     <section className="run-page-section">
       <h1>Add Run</h1>
 
-      <form onSubmit={handleRunSubmit} className="run-form">
-        <input
-          type="datetime-local"
-          name="date"
-          value={formData.date}
-          onChange={handleChange}
-          required
-        />
-        <input
-          type="text"
-          name="name"
-          placeholder="Run Name"
-          value={formData.name}
-          onChange={handleChange}
-          required
-        />
-        <input
-          type="number"
-          name="distance"
-          placeholder="Distance (miles)"
-          value={formData.distance}
-          onChange={handleChange}
-          step="0.01"
-          required
-        />
-        <input
-          type="text"
-          name="total_time"
-          placeholder="Time (HH:MM:SS)"
-          value={formData.total_time}
-          onChange={handleChange}
-          required
-          pattern="^([0-1]?\d|2[0-3]):[0-5]\d:[0-5]\d$"
-        />
-        <button type="submit" className="button">Add Run</button>
-      </form>
+      <RunForm
+        formData={formData}
+        onChange={handleChange}
+        onSubmit={handleRunSubmit}
+      />
 
       <h1>My Runs</h1>
       {runs.length > 0 ? (
