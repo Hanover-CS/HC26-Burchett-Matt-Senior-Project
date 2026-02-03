@@ -30,15 +30,17 @@
  * Last Modified: 1-28-2025
  */
 
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { BASE_URL } from "../config";
+
 import "./MoodPage.css";
+
 import MoodForm from "./MoodForm";
 import MoodTable from "./MoodTable";
 
-function MoodPage() {
+const MOOD_URL = `${BASE_URL}/api/mood`;
 
-  MOOD_URL = `${BASE_URL}/api/mood`;
+function MoodPage() {
 
   const deleteSuccess = "✅ Mood deleted successfully!";
   const deleteError = "❌ Error deleting mood";

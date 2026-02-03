@@ -46,9 +46,9 @@ import "./RunsPage.css";
 import RunForm from "./RunsForm";
 import RunsTable from "./RunsTable";
 
-function RunsPage() {
+const RUNS_URL = `${BASE_URL}/api/runs`;
 
-  const RUNS_URL = `${BASE_URL}/api/runs`;
+function RunsPage() {
 
   const addSuccess = "✅ Run added successfully!";
   const addError = "❌ Error adding run";
