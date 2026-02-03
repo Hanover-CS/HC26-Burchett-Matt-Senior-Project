@@ -16,6 +16,10 @@
  * 
  * Dependencies:
  * - React
+ * - ./RunsPage.css for styling
+ * 
+ * Author: Matt Burchett
+ * Last Modified: 2-2-2026
  */
 
 import "./RunsPage.css";

@@ -3,6 +3,19 @@
  *
  * Description:
  * Displays a table of runs with delete actions.
+ * 
+ * Responsibilities:
+ * - Render a table of run entries.
+ * - Provide delete button for each run.
+ * 
+ * Key Components / Functions:
+ * - RunsTable: Functional component rendering the table.
+ * 
+ * Dependencies:
+ * - ./RunsPage.css for styling
+ * 
+ * Author: Matt Burchett
+ * Last Modified: 2-2-2026
  */
 
 import "./RunsPage.css";
